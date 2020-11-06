@@ -7,6 +7,27 @@
 - Quadrotor Simulator
 
 ### Usage
+Trajectory generation and control
+```
+from TrajGen import trajGenerator, Helix_waypoints
+from Quadrotor import QuadSim
+import controller
+
+waypoints = Helix_waypoints(5)
+
+#Generate trajectory through waypoints
+traj = trajGenerator(waypoints,max_vel = 10,gamma = 1000000)
+
+#initialise simulation with given controller and trajectory
+Tmax = traj.TS[-1]
+des_state = traj.get_des_state
+sim = QuadSim(controller,des_state,Tmax)
+
+#run simulation
+sim.run()
+```
+![image](./helixtraj.gif)
+
 
 ### Future Work
 

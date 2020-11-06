@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import mpl_toolkits.mplot3d.axes3d as Axes3D
 from .rrtutils import *
 
 class RRT:
@@ -108,3 +109,4 @@ class RRT:
         self.draw_graph(ax)
         self.draw_path(ax,path)
         self.map.plotobs(ax)
+        plt.show()
