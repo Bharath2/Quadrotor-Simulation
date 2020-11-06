@@ -13,7 +13,11 @@
 - rtree-linux
 
 ### Usage
-Trajectory generation and control
+```python
+python3 runsim.py
+```
+
+Trajectory generation and control example
 ```python
 from TrajGen import trajGenerator, Helix_waypoints
 from Quadrotor import QuadSim
