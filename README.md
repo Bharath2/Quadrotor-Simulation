@@ -6,9 +6,15 @@
 - Nonlinear geometric controller for aggressive trajectory tracking and hover controller
 - Quadrotor Simulator
 
+### Dependencies
+- scipy
+- numpy
+- matplotlib
+- rtree-linux
+
 ### Usage
 Trajectory generation and control
-```
+```python
 from TrajGen import trajGenerator, Helix_waypoints
 from Quadrotor import QuadSim
 import controller
