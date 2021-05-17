@@ -16,8 +16,10 @@
 ```python
 python3 runsim.py
 ```
+#Output
+![image](./imgs/helixtraj.gif)
 
-Trajectory generation and control example
+#Trajectory generation and control example
 ```python
 from TrajGen import trajGenerator, Helix_waypoints
 from Quadrotor import QuadSim
@@ -36,7 +38,7 @@ sim = QuadSim(controller,des_state,Tmax)
 #run simulation
 sim.run()
 ```
-![image](./helixtraj.gif)
+![image](./imgs/helixtraj.gif)
 
 
 ### Future Work
@@ -46,5 +48,5 @@ sim.run()
 
 ### References
 - [Polynomial Trajectory Planning for Aggressive Quadrotor Flight in Dense Indoor Environments - Charles Richter, Adam Bry, and Nicholas Roy](https://groups.csail.mit.edu/rrg/papers/Richter_ISRR13.pdf)
-- [Minimum Snap Trajectory Generation and Control for Quadrotors - Daniel Mellinger and Vijay Kumar](https://arxiv.org/pdf/1706.06478.pdf)
+- [Trajectory Generation and Control for Quadrotors - Daniel Mellinger and Vijay Kumar](https://repository.upenn.edu/cgi/viewcontent.cgi?article=1705&context=edissertations)
 - [Motion Planning as Search - Russ Tedrake](http://underactuated.csail.mit.edu/planning.html#section2)

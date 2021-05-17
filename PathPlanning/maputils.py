@@ -61,7 +61,7 @@ class Map:
     elif self.dim == 3:
         for box in obstacles:
             X, Y, Z = cuboid_data(box)
-            ax.plot_surface(X, Y, Z, rstride=1, cstride=1,color='k',zorder = 1)
+            ax.plot_surface(X, Y, Z, rstride=1, cstride=1,color=(0.1, 0.15, 0.3, 0.2),zorder = 1)
     else: print('can not plot for given dimensions')
 
 
