@@ -16,10 +16,10 @@
 ```python
 python3 runsim.py
 ```
-#Output
+#### Output
 ![image](./imgs/helixtraj.gif)
 
-#Trajectory generation and control example
+#### Trajectory generation and control example
 ```python
 from TrajGen import trajGenerator, Helix_waypoints
 from Quadrotor import QuadSim
