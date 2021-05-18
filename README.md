@@ -17,7 +17,7 @@
 python3 runsim.py
 ```
 #### Output
-![image](./imgs/helixtraj.gif)
+![image](./imgs/rrt.gif)
 
 #### Trajectory generation and control example
 ```python
