@@ -37,9 +37,9 @@ sim = QuadSim(controller,des_state,Tmax)
 
 #run simulation
 sim.run()
-```
-![image](./imgs/helixtraj.gif)
 
+![image](./imgs/helixtraj.gif)
+```
 
 ### Future Work
 
