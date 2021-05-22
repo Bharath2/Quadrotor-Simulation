@@ -13,11 +13,6 @@
 - rtree-linux
 
 ### Usage
-```python
-python3 runsim.py
-```
-#### Output
-![image](./imgs/rrt2.gif)
 
 #### Trajectory generation and control example
 ```python
@@ -39,6 +34,13 @@ sim = QuadSim(controller,des_state,Tmax)
 sim.run()
 ```
 ![image](./imgs/helixtraj.gif)
+
+#### With Path Planning
+```python
+python3 runsim.py
+```
+#### Output
+![image](./imgs/rrt2.gif)
 
 
 ### Future Work
