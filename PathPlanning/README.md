@@ -39,9 +39,7 @@ waypoints, min_cost = rrt.plan()
 #plot the waypoints and obstacles
 rrt.draw_scene(waypoints, ax)
 ```
-![image](./ex.gif)
-
-more in [examples.ipynb](./examples.ipynb)
+![image](../ex.gif)
 
 ### Future Work
 
