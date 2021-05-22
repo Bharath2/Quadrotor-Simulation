@@ -39,7 +39,6 @@ sim.run()
 ```python
 python3 runsim.py
 ```
-#### Output
 ![image](./imgs/rrt2.gif)
 
 
