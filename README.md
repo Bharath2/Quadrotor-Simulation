@@ -43,6 +43,7 @@ python3 runsim.py
 ![image](./imgs/rrt2.gif)
 
 
+find out more in [PathPlanning/README.md](./PathPlanning/README.md)  
 ### Future Work
 
 - Adding disturbance to quadrotor model
