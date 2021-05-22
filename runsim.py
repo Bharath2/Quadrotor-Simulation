@@ -36,7 +36,7 @@ waypoints, min_cost = rrt.plan()
 waypoints = 0.02*waypoints
 
 #Generate trajectory through waypoints
-traj = trajGenerator(waypoints, max_vel = 10, gamma = 1000000)
+traj = trajGenerator(waypoints, max_vel = 10, gamma = 1e6)
 
 #initialise simulation with given controller and trajectory
 Tmax = traj.TS[-1]
