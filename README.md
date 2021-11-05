@@ -7,10 +7,7 @@
 - Quadrotor Simulator
 
 ### Dependencies
-- scipy
-- numpy
-- matplotlib
-- rtree-linux
+- scipy, numpy, matplotlib, rtree-linux
 
 ### Usage
 
