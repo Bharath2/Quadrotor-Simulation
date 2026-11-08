@@ -8,7 +8,7 @@
 
 from rtree import index
 import numpy as np
-from matplotlib.pyplot import Rectangle
+from matplotlib.patches import Rectangle
 
 #obstacle map
 class Map:

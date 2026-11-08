@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import mpl_toolkits.mplot3d.axes3d as Axes3D
 from .rrtutils import *
 
 class RRT:
@@ -101,7 +100,7 @@ class RRT:
         if ax is None:
             fig = plt.figure()
             if self.dim == 3:
-                ax = Axes3D.Axes3D(fig)
+                ax = fig.add_subplot(projection = '3d')
             elif self.dim == 2:
                 ax = plt.axes()
             else:

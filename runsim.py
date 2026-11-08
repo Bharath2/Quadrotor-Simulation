@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import mpl_toolkits.mplot3d.axes3d as Axes3D
 
 from PathPlanning import RRTStar, Map
 from TrajGen import trajGenerator, Helix_waypoints, Circle_waypoints

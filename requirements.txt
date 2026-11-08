@@ -1,0 +1,4 @@
+numpy>=1.26
+scipy>=1.10
+matplotlib>=3.6
+rtree>=1.0
