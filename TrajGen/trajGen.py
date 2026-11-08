@@ -4,11 +4,18 @@ from scipy import optimize
 from .trajutils import *
 
 class trajGenerator:
-    def __init__(self,waypoints,max_vel = 5,gamma = 100):
+    def __init__(self,waypoints,max_vel = 5,gamma = 100,order = 10):
+        if order % 2 or order < 4:
+            raise ValueError('order must be an even number, at least 4')
         self.waypoints = waypoints
         self.max_vel = max_vel
         self.gamma = gamma
-        self.order = 10
+        #polynomial order: derivatives 1 to order/2 - 1 are constrained at the waypoints
+        #and the highest of them is minimised (order 10: snap, order 8: jerk).
+        #gamma (weight on the total time) has to be scaled with the order,
+        #e.g. the helix example takes about 2 s with gamma = 1e6 for order 10 and 1e4 for order 8
+        self.order = order
+        self.der = order//2 - 1
         len,dim = waypoints.shape
         self.dim = dim
         self.len = len
@@ -32,9 +39,9 @@ class trajGenerator:
 
 
     def MinimizeSnap(self,T):
-        unkns = 4*(self.len - 2)
+        unkns = self.der*(self.len - 2)
 
-        Q = Hessian(T)
+        Q = Hessian(T,self.order,self.der)
         A,B = self.get_constraints(T)
 
         invA = LA.inv(A)
@@ -55,6 +62,7 @@ class trajGenerator:
     def get_constraints(self,T):
         n = self.len - 1
         o = self.order
+        d = self.der
 
         A = np.zeros((self.order*n, self.order*n))
         B = np.zeros((self.order*n, self.dim))
@@ -64,21 +72,21 @@ class trajGenerator:
 
         #waypoints contraints
         for i in range(n):
-            A[i, o*i : o*(i+1)] = polyder(0)
-            A[i + n, o*i : o*(i+1)] = polyder(T[i])
+            A[i, o*i : o*(i+1)] = polyder(0,0,o)
+            A[i + n, o*i : o*(i+1)] = polyder(T[i],0,o)
 
         #continuity contraints
         for i in range(n-1):
-            A[2*n + 4*i: 2*n + 4*(i+1), o*i : o*(i+1)] = -polyder(T[i],'all')
-            A[2*n + 4*i: 2*n + 4*(i+1), o*(i+1) : o*(i+2)] = polyder(0,'all')
+            A[2*n + d*i: 2*n + d*(i+1), o*i : o*(i+1)] = -polyder(T[i],'all',o)
+            A[2*n + d*i: 2*n + d*(i+1), o*(i+1) : o*(i+2)] = polyder(0,'all',o)
 
         #start and end at rest
-        A[6*n - 4 : 6*n, : o] = polyder(0,'all')
-        A[6*n : 6*n + 4, -o : ] = polyder(T[-1],'all')
+        A[(2+d)*n - d : (2+d)*n, : o] = polyder(0,'all',o)
+        A[(2+d)*n : (2+d)*n + d, -o : ] = polyder(T[-1],'all',o)
 
         #free variables
         for i in range(1,n):
-            A[6*n + 4*i : 6*n + 4*(i+1), o*i : o*(i+1)] = polyder(0,'all')
+            A[(2+d)*n + d*i : (2+d)*n + d*(i+1), o*i : o*(i+1)] = polyder(0,'all',o)
 
         return A,B
 
@@ -91,10 +99,10 @@ class trajGenerator:
         t = t - self.TS[i]
         coeff = (self.coeffs.T)[:,self.order*i:self.order*(i+1)]
 
-        pos  = coeff@polyder(t)
-        vel  = coeff@polyder(t,1)
-        accl = coeff@polyder(t,2)
-        jerk = coeff@polyder(t,3)
+        pos  = coeff@polyder(t,0,self.order)
+        vel  = coeff@polyder(t,1,self.order)
+        accl = coeff@polyder(t,2,self.order)
+        jerk = coeff@polyder(t,3,self.order)
 
         #set yaw in the direction of velocity
         yaw, yawdot = self.get_yaw(vel[:2])

@@ -34,6 +34,10 @@ sim.run()
 ```
 ![image](./imgs/helixtraj.gif)
 
+The trajectory is built from 10th order polynomials (minimum snap) by default. Other even orders can be used with `order`,
+e.g. `trajGenerator(waypoints,max_vel = 10,gamma = 1e4,order = 8)` for minimum jerk. `gamma` weighs the total time
+against smoothness and has to be scaled with the order.
+
 #### With Path Planning
 ```python
 python3 runsim.py
