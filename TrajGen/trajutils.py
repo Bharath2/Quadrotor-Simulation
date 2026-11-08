@@ -5,7 +5,7 @@ DesiredState = namedtuple('DesiredState', 'pos vel acc jerk yaw yawdot')
 
 def polyder(t, k = 0, order = 10):
     if k == 'all':
-        terms = np.array([polyder(t,k,order) for k in range(1,5)])
+        terms = np.array([polyder(t,k,order) for k in range(1,order//2)])
     else:
         terms = np.zeros(order)
         coeffs = np.polyder([1]*order,k)[::-1]
