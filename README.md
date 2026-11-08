@@ -7,7 +7,9 @@
 - Quadrotor Simulator
 
 ### Dependencies
-- scipy, numpy, matplotlib, rtree-linux
+- scipy, numpy, matplotlib, rtree
+- `pip install -r requirements.txt`
+- Tested with Python 3.11, numpy 2.4.6, scipy 1.17.1, matplotlib 3.11.2, rtree 1.4.1
 
 ### Usage
 

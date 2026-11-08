@@ -5,7 +5,7 @@ Informed RRT* to plan a collision free path from start to goal position in an N-
 ### Dependencies
 - numpy
 - matplotlib
-- rtree-linux
+- rtree
 
 ### Usage example
 ```python
@@ -37,7 +37,7 @@ rrt = RRTStar(start = start, goal = goal,
 waypoints, min_cost = rrt.plan()
 
 #plot the waypoints and obstacles
-rrt.draw_scene(waypoints, ax)
+rrt.draw_scene(waypoints)
 ```
 ![image](../imgs/ex.gif)
 

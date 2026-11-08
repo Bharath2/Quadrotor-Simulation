@@ -1,6 +1,5 @@
 from rtree import index
 import numpy as np
-from matplotlib.pyplot import Rectangle
 
 class Node:
     def __init__(self,coords):

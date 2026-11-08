@@ -106,7 +106,8 @@ class trajGenerator:
         prev_heading = self.heading
         cosine = max(-1,min(np.dot(prev_heading, curr_heading),1))
         dyaw = np.arccos(cosine)
-        norm_v = np.cross(prev_heading,curr_heading)
+        #2D cross product
+        norm_v = prev_heading[0]*curr_heading[1] - prev_heading[1]*curr_heading[0]
         self.yaw += np.sign(norm_v)*dyaw
 
         if self.yaw > np.pi: self.yaw -= 2*np.pi

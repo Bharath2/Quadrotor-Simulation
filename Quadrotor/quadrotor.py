@@ -71,8 +71,8 @@ class Quadrotor:
         bRw = Quaternion(quat).as_rotation_matrix() # world to body rotation matrix
         wRb = bRw.T # orthogonal matrix inverse = transpose
         # acceleration - Newton's second law of motion
-        accel = 1.0 / params.mass * (wRb.dot(np.array([[0, 0, F]]).T)
-                    - np.array([[0, 0, params.mass * params.g]]).T)
+        accel = 1.0 / params.mass * (wRb.dot(np.array([0, 0, F]))
+                    - np.array([0, 0, params.mass * params.g]))
         # angular velocity - using quternion
         # http://www.euclideanspace.com/physics/kinematics/angularvelocity/
         K_quat = 2.0; # this enforces the magnitude 1 constraint for the quaternion

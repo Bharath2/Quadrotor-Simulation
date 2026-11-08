@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import mpl_toolkits.mplot3d.axes3d as Axes3D
 from collections import deque
 from .quadrotor import Quadrotor
 
@@ -48,7 +47,7 @@ class QuadSim:
     def init_plot(self,ax = None):
         if ax is None:
             fig = plt.figure()
-            ax = Axes3D.Axes3D(fig)
+            ax = fig.add_subplot(projection = '3d')
             ax.set_xlim((0,2))
             ax.set_ylim((0,2))
             ax.set_zlim((0,2))
