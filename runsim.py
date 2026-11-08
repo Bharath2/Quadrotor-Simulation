@@ -45,7 +45,7 @@ sim = QuadSim(controller,des_state,Tmax)
 
 #create a figure
 fig = plt.figure()
-ax = Axes3D.Axes3D(fig)
+ax=fig.add_subplot(111,projection='3d')
 ax.set_xlim((0,2))
 ax.set_ylim((0,2))
 ax.set_zlim((0,2))
